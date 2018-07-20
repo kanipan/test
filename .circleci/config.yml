@@ -21,18 +21,18 @@ jobs:
           command: echo hoge.
       - say_fuga:
           name: Greeting2
-          command: echo fuag.
+          command: echo fuga.
 
-workflows:
-  version: 2
-
-  build-and-deploy:
-    jobs:
-      - checkout
-      - hello_world:
-        requires:
-          - checkout
-      - hold_say_hoge:
-        type: approve
-        requires:
-          - hello_world
+#workflows:
+#  version: 2
+#
+#  build-and-deploy:
+#    jobs:
+#      - checkout
+#      - hello_world:
+#        requires:
+#          - checkout
+#      - hold_say_hoge:
+#        type: approve
+#        requires:
+#          - hello_world
