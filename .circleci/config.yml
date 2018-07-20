@@ -1,13 +1,38 @@
 version: 2
 jobs:
-  build:
+  hello_world:
     docker:
       - image: debian:stretch
     steps:
       - checkout
-      - run:
+      - say_hello:
           name: Greeting
           command: echo Hello, world.
-      - run:
+      - say_date:
           name: Print the Current Time
           command: date
+  say_hoge:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - say_hoge:
+          name: Greeting
+          command: echo hoge.
+      - say_fuga:
+          name: Greeting2
+          command: echo fuag.
+
+workflows:
+  version: 2
+
+  build-and-deploy:
+    jobs:
+      - checkout
+      - hello_world:
+        requires:
+          - checkout
+      - hold_say_hoge:
+        type: approve
+        requires:
+          - hello_world
