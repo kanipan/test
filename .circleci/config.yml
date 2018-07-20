@@ -9,20 +9,20 @@ jobs:
     docker:
       - image: debian:stretch
     steps:
-      - say_hello:
+      - run:
           name: Greeting
           command: echo Hello, world.
-      - say_date:
+      - run:
           name: Print the Current Time
           command: date
   say_hoge:
     docker:
       - image: debian:stretch
     steps:
-      - say_hoge:
+      - run:
           name: Greeting
           command: echo hoge.
-      - say_fuga:
+      - run:
           name: Greeting2
           command: echo fuga.
 
