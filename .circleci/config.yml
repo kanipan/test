@@ -32,10 +32,10 @@ workflows:
   build-and-deploy:
     jobs:
       - checkout_code
-#      - hello_world:
-#        requires:
-#          - checkout_code
-#      - hold_say_hoge:
-#        type: approve
-#        requires:
-#          - hello_world
+      - hello_world:
+        requires:
+          - checkout_code
+      - hold_say_hoge:
+        type: approve
+        requires:
+          - hello_world
