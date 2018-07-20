@@ -33,9 +33,9 @@ workflows:
     jobs:
       - checkout_code
       - hello_world:
-        requires:
-          - checkout_code
+          requires:
+            - checkout_code
       - hold_say_hoge:
-        type: approve
-        requires:
-          - hello_world
+          type: approve
+          requires:
+            - hello_world
