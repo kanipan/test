@@ -36,7 +36,7 @@ workflows:
           requires:
             - checkout_code
       - hold_say_hoge:
-          type: approve
+          type: approval
           requires:
             - hello_world
       - say_hoge:
