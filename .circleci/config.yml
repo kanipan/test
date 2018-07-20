@@ -1,7 +1,10 @@
 version: 2
 jobs:
   checkout_code:
-    - checkout
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
   hello_world:
     docker:
       - image: debian:stretch
