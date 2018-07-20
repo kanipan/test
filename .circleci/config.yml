@@ -35,7 +35,10 @@ workflows:
       - hello_world:
           requires:
             - checkout_code
-#      - hold_say_hoge:
-#          type: approve
-#          requires:
-#            - hello_world
+      - hold_say_hoge:
+          type: approve
+          requires:
+            - hello_world
+      - say_hoge:
+          requires:
+            - hold_say_hoge
