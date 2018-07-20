@@ -1,10 +1,11 @@
 version: 2
 jobs:
+  checkout_code:
+    - checkout
   hello_world:
     docker:
       - image: debian:stretch
     steps:
-      - checkout
       - say_hello:
           name: Greeting
           command: echo Hello, world.
@@ -15,7 +16,6 @@ jobs:
     docker:
       - image: debian:stretch
     steps:
-      - checkout
       - say_hoge:
           name: Greeting
           command: echo hoge.
@@ -23,16 +23,16 @@ jobs:
           name: Greeting2
           command: echo fuga.
 
-#workflows:
-#  version: 2
-#
-#  build-and-deploy:
-#    jobs:
-#      - checkout
-#      - hello_world:
-#        requires:
-#          - checkout
-#      - hold_say_hoge:
-#        type: approve
-#        requires:
-#          - hello_world
+workflows:
+  version: 2
+
+  build-and-deploy:
+    jobs:
+      - checkout_code
+      - hello_world:
+        requires:
+          - checkout_code
+      - hold_say_hoge:
+        type: approve
+        requires:
+          - hello_world
