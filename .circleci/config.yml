@@ -22,8 +22,12 @@ jobs:
       - run:
           name: Greeting
           command: echo hoge.
+  say_fuga:
+    docker:
+      - image: debian:stretch
+    steps:
       - run:
-          name: Greeting2
+          name: Greeting
           command: echo fuga.
 
 workflows:
@@ -42,3 +46,11 @@ workflows:
       - say_hoge:
           requires:
             - hold_say_hoge
+      - hold_say_fuga:
+          type: approval
+          requires:
+            - say_hoge
+      - say_fuga:
+          requires:
+            - hold_say_fuga
+
